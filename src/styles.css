@@ -1,0 +1,4 @@
+.object-marker {
+  transition: transform 1000ms linear;
+  will-change: transform;
+}
