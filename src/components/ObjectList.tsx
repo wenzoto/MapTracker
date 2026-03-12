@@ -1,15 +1,12 @@
-import { useMemo } from 'react';
 import { Box, Typography } from '@mui/material';
 import { observer } from 'mobx-react-lite';
 import { List } from 'react-window';
 
 import { objectsStore } from '@/stores/objectsStore';
-import type { TRowProps } from '@/types/trackable';
 import { ObjectListRow } from './ObjectListRow';
 
 export const ObjectList = observer(() => {
     const objects = objectsStore.objectsArray;
-    const rowProps = useMemo<TRowProps>(() => ({ objects }), [ objects ]);
 
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
@@ -22,7 +19,7 @@ export const ObjectList = observer(() => {
                     rowCount={ objects.length }
                     rowHeight={ 73.02 }
                     rowComponent={ ObjectListRow }
-                    rowProps={ rowProps }
+                    rowProps={ { objects } }
                     overscanCount={ 8 }
                     style={{ height: '100%', width: '100%' }}
                 />
